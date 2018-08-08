@@ -1,3 +1,4 @@
+
 drop table if exists BLUE_ACCOUNT;
 drop table if exists BLUE_PAYMENT;
 create table BLUE_ACCOUNT (id varchar(255) not null, createdOn datetime(6), updatedOn datetime(6), version integer, email varchar(255) not null, mobile varchar(255) not null, password varchar(255) not null, username varchar(255) not null, primary key (id)) engine=InnoDB;
