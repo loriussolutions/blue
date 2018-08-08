@@ -86,45 +86,37 @@ th, td {
 			<p></p>
 			<div style="overflow-x: auto;">
 				<table style="width: 100%">
-					<tr>			
-						<th>Ação</th>			
+					<tr>
+						<th>Ação</th>
 						<th>Estado</th>
 						<th>Mês</th>
-						<th>Emissão Documento</th>
+						<!-- th>Emissão Documento</th-->
 						<th>Data Vencimento</th>
 						<th>Valor</th>
+						<th>Comentário</th>
 					</tr>
-					<c:forEach var="payment" items="${payments}">					
-					
+					<c:forEach var="payment" items="${payments}">
 						<tr>
 							<td>
-								<div>
-									<form method="POST" action="payment/updload" enctype="multipart/form-data">
-										Enviar comprovante<input type="file" name="file"><br /> 									
-										<input type="submit" value="Enviar">
-									</form>	
-								</div>
+								<div>Confirmar Pagto</div>
 							</td>
-							<td>
-								<c:if test="${payment.status == 'OPEN'}">
+							<td><c:if test="${payment.status == 'OPEN'}">
 									<div>EM ABERTO</div>
 								</c:if> <c:if test="${payment.status == 'PAID'}">
 									<div>PAGO</div>
 								</c:if> <c:if test="${payment.status == 'EXPIRED'}">
-									<div style="background-color: red;color: white;font-size: large;padding-right: 5px;padding-left: 5px">ATRASADO</div>
-								</c:if>
-							</td>
+									<div
+										style="background-color: red; color: white; font-size: large; padding-right: 5px; padding-left: 5px">ATRASADO</div>
+								</c:if></td>
 							<td>${payment.reference}</td>
-							<td>${payment.issueDate}</td>
+							<!--td>${payment.issueDate}</td-->
 							<td>${payment.dueDate}</td>
 							<td>R$ ${payment.amount}</td>
+							<td>${payment.comments}</td>
 						</tr>
 					</c:forEach>
 				</table>
-
 			</div>
-
-
 		</div>
 
 		<div class="right">

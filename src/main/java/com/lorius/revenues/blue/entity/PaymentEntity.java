@@ -86,5 +86,4 @@ public class PaymentEntity extends AbstractEntity {
 	public void setStatus(PaymentStatus status) {
 		this.status = status;
 	}
-
 }

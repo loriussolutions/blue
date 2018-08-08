@@ -1,8 +1,5 @@
 package com.lorius.revenues.blue.controller;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +26,12 @@ public class PaymentController {
 	public String getAccount(Model model) {
 		// ModelAndView mv = new ModelAndView("/payment/index");
 
-		PaymentEntity payment = new PaymentEntity();
-		payment.setAmount(new BigDecimal("300"));
-		payment.setDueDate(LocalDate.now());
-		payment.setIssueDate(LocalDateTime.now());
-		payment.setReference(LocalDateTime.now().toString());
-		paymentService.save(payment);
+//		PaymentEntity payment = new PaymentEntity();
+//		payment.setAmount(new BigDecimal("300"));
+//		payment.setDueDate(LocalDate.now());
+//		payment.setIssueDate(LocalDateTime.now());
+//		payment.setReference(LocalDateTime.now().toString());
+//		paymentService.save(payment);
 		List<PaymentEntity> payments = paymentService.findAll();
 
 		model.addAttribute("payments", payments);
@@ -46,12 +43,29 @@ public class PaymentController {
 	public String uploadPaymentProof(Model model, @RequestParam("file") MultipartFile file) {
 		// ModelAndView mv = new ModelAndView("/payment/index");
 
-		PaymentEntity payment = new PaymentEntity();
-		payment.setAmount(new BigDecimal("300"));
-		payment.setDueDate(LocalDate.now());
-		payment.setIssueDate(LocalDateTime.now());
-		payment.setReference(LocalDateTime.now().toString());
-		paymentService.save(payment);
+//		PaymentEntity payment = new PaymentEntity();
+//		payment.setAmount(new BigDecimal("300"));
+//		payment.setDueDate(LocalDate.now());
+//		payment.setIssueDate(LocalDateTime.now());
+//		payment.setReference(LocalDateTime.now().toString());
+//		paymentService.save(payment);
+		List<PaymentEntity> payments = paymentService.findAll();
+
+		model.addAttribute("payments", payments);
+
+		return "/payment/index";
+	}
+
+	@RequestMapping(value = { "/payment/cron/update" }, method = RequestMethod.GET)
+	public String cronJobUpdate(Model model) {
+		// ModelAndView mv = new ModelAndView("/payment/index");
+
+//		PaymentEntity payment = new PaymentEntity();
+//		payment.setAmount(new BigDecimal("300"));
+//		payment.setDueDate(LocalDate.now());
+//		payment.setIssueDate(LocalDateTime.now());
+//		payment.setReference(LocalDateTime.now().toString());
+//		paymentService.save(payment);
 		List<PaymentEntity> payments = paymentService.findAll();
 
 		model.addAttribute("payments", payments);
