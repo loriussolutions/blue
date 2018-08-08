@@ -129,7 +129,7 @@ th, td {
 
 	<div
 		style="background-color: #e5e5e5; text-align: center; padding: 10px; margin-top: 7px;">©
-		copyright Lorius Solutions</div>
+		copyright Lorius Solutions - 1.0-SNAPSHOT</div>
 
 </body>
 </html>

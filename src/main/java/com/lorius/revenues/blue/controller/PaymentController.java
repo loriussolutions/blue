@@ -57,20 +57,11 @@ public class PaymentController {
 	}
 
 	@RequestMapping(value = { "/payment/cron/update" }, method = RequestMethod.GET)
-	public String cronJobUpdate(Model model) {
-		// ModelAndView mv = new ModelAndView("/payment/index");
-
-//		PaymentEntity payment = new PaymentEntity();
-//		payment.setAmount(new BigDecimal("300"));
-//		payment.setDueDate(LocalDate.now());
-//		payment.setIssueDate(LocalDateTime.now());
-//		payment.setReference(LocalDateTime.now().toString());
-//		paymentService.save(payment);
-		List<PaymentEntity> payments = paymentService.findAll();
-
-		model.addAttribute("payments", payments);
-
-		return "/payment/index";
+	public void cronJobUpdate(Model model) {
+		paymentService.updatePaymentStatus();
+		
+		System.out.println("Update Payment Status");
+		
 	}
 
 }
