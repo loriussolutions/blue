@@ -2,5 +2,5 @@ package com.lorius.revenues.blue.entity.type;
 
 public enum PaymentStatus {
 
-	OPEN, PAID, EXPIRED;
+	OPEN, PAID, EXPIRED, PENDING;
 }

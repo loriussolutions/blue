@@ -69,6 +69,9 @@ th, td {
 }
 </style>
 </head>
+
+<c:url value="/static/image/paybutton_small_open.png" var="payButtonSmallOpen"/>
+
 <body style="font-family: Verdana">
 
 	<div
@@ -88,8 +91,7 @@ th, td {
 				<table style="width: 100%">
 					<tr>
 						<th>Ação</th>
-						<th>Estado</th>
-						<th>Mês</th>
+						<th>Estado</th>					
 						<!-- th>Emissão Documento</th-->
 						<th>Data Vencimento</th>
 						<th>Valor</th>
@@ -98,17 +100,22 @@ th, td {
 					<c:forEach var="payment" items="${payments}">
 						<tr>
 							<td>
-								<div>Confirmar Pagto</div>
+								<c:if test="${payment.status == 'OPEN' || payment.status == 'EXPIRED'}">
+									<div><img alt="" src="${payButtonSmallOpen}"/></div>
+								</c:if>														
 							</td>
 							<td><c:if test="${payment.status == 'OPEN'}">
-									<div>EM ABERTO</div>
+									<div style="background-color:blue; color: white; font-size: large; padding-right: 5px; padding-left: 5px">EM ABERTO</div>
 								</c:if> <c:if test="${payment.status == 'PAID'}">
-									<div>PAGO</div>
-								</c:if> <c:if test="${payment.status == 'EXPIRED'}">
-									<div
-										style="background-color: red; color: white; font-size: large; padding-right: 5px; padding-left: 5px">ATRASADO</div>
-								</c:if></td>
-							<td>${payment.reference}</td>
+									<div style="background-color:green;color: white; font-size: large; padding-right: 5px; padding-left: 5px">PAGO</div>
+								</c:if> 
+								<c:if test="${payment.status == 'EXPIRED'}">
+									<div style="background-color: red; color: white; font-size: large; padding-right: 5px; padding-left: 5px">ATRASADO</div>
+								</c:if>
+								<c:if test="${payment.status == 'PENDING'}">
+									<div style="background-color:silver; color: white; font-size: large; padding-right: 5px; padding-left: 5px">SOB VALIDAÇÃO</div>
+								</c:if>
+							</td>			
 							<!--td>${payment.issueDate}</td-->
 							<td>${payment.dueDate}</td>
 							<td>R$ ${payment.amount}</td>
