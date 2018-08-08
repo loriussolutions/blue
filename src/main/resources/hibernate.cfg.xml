@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/blue</property>
+		<property name="connection.username">lorius</property>
+		<property name="connection.password">123456</property>
+		<!-- Connection Pool Size (built-in) -->
+		<property name="connection.pool.size">1</property>
+		<!-- SQL Dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQL57InnoDBDialect</property>
+		<mapping class="com.lorius.revenues.blue.entity.AccountEntity" />
+		<mapping class="com.lorius.revenues.blue.entity.PaymentEntity" />
+	</session-factory>
+</hibernate-configuration>
